@@ -1,0 +1,168 @@
+<!doctype html>
+
+{% include "base.html" %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-2">
+            <div class="card">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                    <canvas id="myChart1" style="border:1px solid #00ff00;" width="500" height="200"></canvas>
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <span>{{ xdata }}</span>
+                    <span>{{ ydata }}</span>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-2">
+            <div class="card">
+            <div class="card-header">Featured</div>
+            <div class="card-body">
+                <canvas id="myChart2" style="border:1px solid #00ff00;" width="300" height="200"></canvas>
+              <h5 class="card-title">Special title treatment</h5>
+                  <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+                </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-2">
+            <div class="card">
+            <div class="card-header">Featured</div>
+            <div class="card-body">
+                <canvas id="myChart3" style="border:1px solid #00ff00;" width="500" height="200"></canvas>
+                <h5 class="card-title">Special title treatment</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2"> Default checked radio</label>
+                </div>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-2">
+            <div class="card">
+            <div class="card-header">Featured</div>
+            <div class="card-body">
+                <canvas id="myChart4" style="border:1px solid #00ff00;" width="500" height="200"></canvas>
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3 mb-sm-2">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+
+                <canvas class="img-fluid rounded-start" id="myChart5" style="border:1px solid #00ff00;" width="300" height="350"></canvas>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <label for="customRange1" class="form-label">Example range</label>
+                <input type="range" class="form-range light" min="0" max="5" id="customRange1">
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-sm-6 mb-3 mb-sm-2">
+            <div class="card text-bg-dark">
+                <canvas id="myChart6" style="border:1px solid #00ff00;" width="500" height="200"></canvas>
+              <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>-->
+
+<!--let ctx = document.getElementById("myChart1").getContext('2d');-->
+<script src="{% static 'js/chart.umd.js' %}"></script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    let ctx = document.getElementById("myChart1").getContext('2d');
+    let gradient = ctx.createLinearGradient(0, 0, 0, 200);
+            gradient.addColorStop(0, 'rgba(74,169,230,0.8)');
+            gradient.addColorStop(1, 'rgba(74,50,230,0.001)');
+    let xDate = ['12-00', '12-10', '12-20', '12-30', '12-40', '12-50', '13-00', '13-10', '13-20', '13-30', '13-40', '13-50', '14-00', '14-10', '14-20', '14-30', '14-40', '14-50'];
+    let yDate = [22, 13, 14, 15, 16, 17, 18, 20, 22, 18, 13, 16, 14, 23, 22, 21, 23, 18];
+    let xScaleConfig = {
+                    min: 0,
+                    max: 10,
+                    border: {color: 'rgba(74,169,230,1)'},
+                    grid: {color: 'rgba(74,169,230,0.1)'}
+                    };
+    let yScaleConfig = {
+                    border: {color: 'rgba(74,169,230,1)'},
+                    grid: {color: 'rgba(74,169,230,0.1)'}
+                    };
+
+    let chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: xDate,
+        datasets: [
+                {
+                  data: yDate,
+                  label: false,
+                  backgroundColor: gradient,
+                  borderColor: "#417690",
+                  pointStyle: false,
+                  fill: true,
+                  tension: 0.2,
+                  borderWidth: 1
+                }
+               ]
+          },
+          options: {
+             plugins: {
+                 legend: {display: false}
+                       },
+             scales: {
+                 x: xScaleConfig,
+                 y: yScaleConfig
+                    },
+                    y: {
+              suggestedMin: -10,
+              suggestedMax: 50}
+
+          }
+
+        })
+        });
+</script>

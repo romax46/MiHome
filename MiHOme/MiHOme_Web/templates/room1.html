@@ -1,0 +1,40 @@
+{% include "base.html" %}
+
+
+<div class="container">
+    <div class="form-control-sm">
+        <br>
+    <snap class="text-center">{{ titles }}</snap>
+        <br>
+        <hr>
+        <h3>ttets</h3>
+        </div>
+</div>
+
+<div class="container">
+    <div class="form-control-sm">
+        {% if date_list %}
+
+        <table class="table">
+            <thead>
+            <tr>
+            {% for key in keys %}
+              <th scope="col">{{ key }}</th>
+            {% endfor %}
+            </tr>
+          </thead>
+            <tbody>
+            {% for d in date_list %}
+            </tr>
+                <td>{{ d.id }}</td>
+                <td>{{ d.num }}</td>
+                <td>{{ d.title }}</td>
+            </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+

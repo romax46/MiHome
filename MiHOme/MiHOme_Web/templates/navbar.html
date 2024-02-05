@@ -1,0 +1,55 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+
+      <img src="{% static 'images/from-home.png' %}" width="40" height="30" style="padding-right: 10px;">
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'home' %}">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rooms</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'room' room_id=1 %}">Room 1</a>
+            <a class="dropdown-item" href="#">Room 2</a>
+            <a class="dropdown-item" href="#">Room 3</a>
+            <a class="dropdown-item" href="#">Room 4</a>
+            <a class="dropdown-item" href="#">Room 5</a>
+            {% if username == 'romax'%}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'room' room_id=1 %}">WebCam link</a>
+            {% endif %}
+          </div>
+        </li>
+
+
+
+
+    {% if username == 'romax'%}
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Setings</a>
+        <div class="dropdown-menu">
+          <a class="nav-link" href="/admin/">Admin</a>
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+          <a class="nav-link" href="{% url 'archive' 2024 %}">Archives</a>
+        </div>
+      </li>
+    {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+      </ul>
+
+        <div class="p-2">
+        <a>Привет, {{ username }}</a>
+        <a class="text-danger" href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>

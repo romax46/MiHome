@@ -1,0 +1,19 @@
+{% include "base_mini.html" %}
+{% load crispy_forms_tags %}
+
+<div class="container" style="width: 500px">
+    <br>
+    <br>
+        <form method="post" autocomplete="off">
+        {% csrf_token %}
+            <div class="form-control-sm">
+                <h2>Registred form</h2>
+                <br>
+                <br>
+                {{ registerform|crispy }}
+                <input class="btn btn-success" type="submit">
+            </div>
+        </form>
+</div>
+
+

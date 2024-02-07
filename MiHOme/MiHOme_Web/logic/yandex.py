@@ -1,14 +1,15 @@
 import json
 import requests as req
 import urllib3
+from .. config import accuweather_api_key, yandex_api_key, latitude, longitude, code_loc
 
 urllib3.disable_warnings()
 
 
 def yandex_weather():
-    latitude = 45.044029
-    longitude = 38.805221
-    token_yandex = '7bf600d2-1b84-45ec-9033-08e357c910ab'
+
+
+    token_yandex = yandex_api_key
     url_yandex = f'https://api.weather.yandex.ru/v2/informers/?lat={latitude}&lon={longitude}&lang=ru_RU'
     url = 'https://yandex.ru/maps/?ll=38.825732%2C44.985237&mode=whatshere&utm_campaign=desktop&utm_medium=search&utm_source=maps&whatshere%5Bpoint%5D=38.805221%2C45.044029&whatshere%5Bzoom%5D=12.03&z=12'
 
@@ -31,8 +32,7 @@ def yandex_weather():
 # yandex_weather()
 
 def weather():
-    code_loc = '2431403'  # Krasnodar'293686'
-    api_key = 'Uzrf7CtdkbZrmI0YbjAaPoYxrIjr9DmQ'
+    api_key = accuweather_api_key
     url_weather = f'http://dataservice.accuweather.com/forecasts/v1/daily/1day/{code_loc}?apikey={api_key}&language=ru&details=true&metric=True'
     response = req.get(url_weather, headers={"APIKey": api_key})
     json_data = json.loads(response.text)

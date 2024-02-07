@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from MiHOme_Web.config import postge_user, postge_pass, postge_server
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,10 +84,22 @@ WSGI_APPLICATION = 'MiHOme.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': postge_user,
+        'PASSWORD': postge_pass,
+        'HOST': postge_server,
+        'PORT': 5432,
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
